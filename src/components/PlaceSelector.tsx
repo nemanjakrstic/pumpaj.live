@@ -38,6 +38,12 @@ export const PlaceSelector = () => {
       options={options}
       value={value}
       placeholder="Pretraga"
+      styles={{
+        option: (provided, state) => ({
+          ...provided,
+          color: state.isSelected ? "#fff" : "#333", // Text color
+        }),
+      }}
       noOptionsMessage={() =>
         data && "dummy" in data
           ? "Ukucaj 3 ili više slova za pretragu"
