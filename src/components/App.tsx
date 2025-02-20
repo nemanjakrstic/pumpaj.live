@@ -37,6 +37,7 @@ export const App = () => {
   const acknowledged = useStore((state) => state.acknowledged);
   const [showSettingsModal, setShowSettingsModal] = useState(false);
   const [showRaiseAwarenessModal, setShowRaiseAwarenessModal] = useState(false);
+  const [isInformed, setIsInformed] = useState(false);
   const [pumpCount, setPumpCount] = useState(0);
 
   useAnimationFrame(true, () => {
@@ -57,10 +58,11 @@ export const App = () => {
   }, 100);
 
   useEffect(() => {
-    if (pumpCount === 10) {
+    if (pumpCount >= 10 && !isInformed) {
       setShowRaiseAwarenessModal(true);
+      setIsInformed(true);
     }
-  }, [pumpCount]);
+  }, [pumpCount, isInformed]);
 
   useEffect(() => {
     socket.on("init", (data: { pumpers: number }) => {
