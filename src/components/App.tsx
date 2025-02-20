@@ -1,4 +1,4 @@
-import { Badge, Box } from "@mantine/core";
+import { Badge, Box, Button } from "@mantine/core";
 import { useThrottledCallback } from "@mantine/hooks";
 import {
   circle,
@@ -16,7 +16,6 @@ import { mapStyle } from "../map";
 import { socket } from "../socket";
 import { useStore } from "../store";
 import { Location } from "../types/Location";
-import { Button } from "./Button";
 import { Layout } from "./Layout";
 import { SettingsModal } from "./SettingsModal";
 import { WelcomeModal } from "./WelcomeModal";
@@ -182,7 +181,9 @@ export const App = () => {
         display="flex"
         style={{ justifyContent: "center" }}
       >
-        <Button onClick={handlePumpClick}>PUMPAJ!</Button>
+        <Button color="red" fw={900} size="xl" onClick={handlePumpClick}>
+          PUMPAJ!
+        </Button>
       </Box>
     </Layout>
   );

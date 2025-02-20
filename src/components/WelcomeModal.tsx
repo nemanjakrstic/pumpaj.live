@@ -1,8 +1,7 @@
-import { Alert, Group, Image, Modal, Stack, Text } from "@mantine/core";
+import { Alert, Button, Group, Image, Modal, Stack, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useEffect } from "react";
 import splash from "../images/splash.webp";
-import { Button } from "./Button";
 import { Link } from "./Link";
 
 interface WelcomeModalProps {
@@ -44,7 +43,9 @@ export const WelcomeModal = ({ onClose }: WelcomeModalProps) => {
         </Text>
 
         <Group justify="center">
-          <Button onClick={close}>SPREMAN SAM!</Button>
+          <Button color="red" fw={900} size="xl" onClick={close}>
+            SPREMAN SAM!
+          </Button>
         </Group>
 
         <Alert variant="light" color="blue" style={{ textAlign: "center" }}>

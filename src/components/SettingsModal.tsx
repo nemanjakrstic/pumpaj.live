@@ -1,4 +1,5 @@
 import {
+  Button,
   Group,
   Modal,
   ModalProps,
@@ -8,7 +9,6 @@ import {
 } from "@mantine/core";
 import { IconMapPin } from "@tabler/icons-react";
 import { useStore } from "../store";
-import { Button } from "./Button";
 import { PlaceSelector } from "./PlaceSelector";
 
 export const SettingsModal = ({ onClose, ...rest }: ModalProps) => {
@@ -29,6 +29,9 @@ export const SettingsModal = ({ onClose, ...rest }: ModalProps) => {
 
         <Group justify="center">
           <Button
+            color="red"
+            fw={900}
+            size="lg"
             onClick={() => {
               useStore.setState({ acknowledged: true });
               onClose();
