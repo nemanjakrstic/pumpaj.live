@@ -26,7 +26,7 @@ export const useStore = create(
       acknowledged: false,
       place: DEFAULT_PLACE,
       location: DEFAULT_LOCATION,
-      user: "",
+      user: v4(),
     }),
     {
       name: "pumpaj.live",
@@ -34,8 +34,7 @@ export const useStore = create(
       migrate: (persistedState, version) => {
         const state = persistedState as Store;
 
-        // `&& !state.user` is probably redundant
-        if (version === 0 && !state.user) {
+        if (version === 0) {
           state.user = v4();
         }
 
