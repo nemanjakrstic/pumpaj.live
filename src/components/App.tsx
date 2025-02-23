@@ -1,4 +1,4 @@
-import { Badge, Box, Button } from "@mantine/core";
+import { Badge, Box, Button, Group, Notification } from "@mantine/core";
 import { useThrottledCallback } from "@mantine/hooks";
 import {
   circle,
@@ -33,6 +33,7 @@ export const App = () => {
   const mapRef = useRef<Map>(null);
   const pumpsRef = useRef<PumpCollection>({});
   const [pumpers, setPumpers] = useState(0);
+  const [recentPumpers, setRecentPumpers] = useState(0); // User count in the last 24 hours
   const currentLocation = useStore((state) => state.location);
   const acknowledged = useStore((state) => state.acknowledged);
   const [showSettingsModal, setShowSettingsModal] = useState(false);
@@ -65,8 +66,9 @@ export const App = () => {
   }, [pumpCount, isInformed]);
 
   useEffect(() => {
-    socket.on("init", (data: { pumpers: number }) => {
+    socket.on("init", (data: { pumpers: number; recentPumpers: number }) => {
       setPumpers(data.pumpers);
+      setRecentPumpers(data.recentPumpers);
     });
 
     socket.on("pump", (data: { pumpers: number; location: Location }) => {
@@ -92,7 +94,7 @@ export const App = () => {
       attributionControl: false,
     });
 
-    map.addControl(new AttributionControl(), "top-right");
+    map.addControl(new AttributionControl({ compact: true }), "top-right");
 
     map.on("load", () => {
       mapRef.current = map;
@@ -172,7 +174,12 @@ export const App = () => {
       <Box id="map" h="calc(100vh - 60px)" />
 
       <Box pos="fixed" top={60} left={0} p="xs">
-        <Badge color="green">Online pumpača: {pumpers}</Badge>
+        <Notification color="red" withCloseButton={false}>
+          <Group gap="xs">
+            <Badge color="green">{pumpers}: online</Badge>
+            <Badge color="red">{recentPumpers}: poslednjih 24h</Badge>
+          </Group>
+        </Notification>
       </Box>
 
       <Box

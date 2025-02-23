@@ -11,9 +11,8 @@ socket.on("connect", () => {
         socket.emit("init", {
           token,
           location: useStore.getState().location,
+          user: useStore.getState().user,
         });
-
-        console.log("User init", JSON.stringify(useStore.getState().location));
       });
   });
 });
