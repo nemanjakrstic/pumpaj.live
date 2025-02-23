@@ -14,12 +14,12 @@
     "@mantine/core": "^7.17.0",
     "@mantine/hooks": "^7.17.0",
     "@tabler/icons-react": "^3.30.0",
-    "@tanstack/react-query": "^5.66.7",
+    "@tanstack/react-query": "^5.66.9",
     "@turf/helpers": "^7.2.0",
     "@turf/turf": "^7.2.0",
     "axios": "^1.7.9",
     "lodash": "^4.17.21",
-    "maplibre-gl": "^5.1.0",
+    "maplibre-gl": "^5.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-select": "^5.10.0",
@@ -33,13 +33,13 @@
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
-    "eslint": "^9.20.1",
+    "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
-    "prettier": "^3.5.1",
+    "prettier": "^3.5.2",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
-    "vite": "^6.1.0"
+    "vite": "^6.1.1"
   }
 }
